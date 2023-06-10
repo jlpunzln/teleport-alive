@@ -1,17 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <Food />
+  <KeepAlive>
+    <Beverage v-if="showBev" />
+  </KeepAlive>
+  <button @click="toggleBeverages">Show Beverages</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Food from "./components/Food.vue";
+import Beverage from "./components/Beverage.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Food,
+    Beverage,
+  },
+  data() {
+    return {
+      showBev: false,
+    };
+  },
+  methods: {
+    toggleBeverages() {
+      this.showBev = !this.showBev;
+    },
+  },
+};
 </script>
 
 <style>
